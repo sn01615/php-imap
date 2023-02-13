@@ -120,6 +120,11 @@ class Folder {
 
     /** @var array */
     public array $status;
+    public array $attributes;
+    public ?bool $is_drafts;
+    public ?bool $is_sent;
+    public ?bool $is_trash;
+    public ?bool $is_junk;
 
     /**
      * Folder constructor.
@@ -249,6 +254,13 @@ class Folder {
         $this->marked = in_array('\Marked', $attributes);
         $this->referral = in_array('\Referral', $attributes);
         $this->has_children = in_array('\HasChildren', $attributes);
+
+        $this->is_drafts = in_array('\Drafts', $attributes);
+        $this->is_sent = in_array('\Sent', $attributes);
+        $this->is_trash = in_array('\Trash', $attributes);
+        $this->is_junk = in_array('\Junk', $attributes);
+
+        $this->attributes = $attributes;
     }
 
     /**
